@@ -5,19 +5,35 @@ import {
   Segment,
   Container,
   Button,
-  Header
+  Header,
+  Menu,
+  Icon
 } from "semantic-ui-react";
+import { sign } from "crypto";
 
-class layout extends Component {
-  constructor(props) {
+interface LayoutProps {
+  activeItem: string;
+}
+interface LayoutState {
+  menuVis: boolean;
+}
+
+class layout extends Component<LayoutProps, LayoutState> {
+  constructor(props: Readonly<LayoutProps>) {
     super(props);
+    this.state = { menuVis: false };
+    this.handleSidebar = this.handleSidebar.bind(this);
   }
   getStaticProps() {}
+
+  handleSidebar = (sta: boolean) => {
+    this.setState({ menuVis: sta });
+  };
 
   render() {
     return (
       <Sidebar.Pushable>
-        <Sidebar.Pusher>
+        <Sidebar.Pusher dimmed={this.state.menuVis}>
           <Segment attached={"bottom"}>
             <Container>
               <Grid>
@@ -26,6 +42,9 @@ class layout extends Component {
                     <Button
                       circular
                       basic
+                      onClick={() => {
+                        this.handleSidebar(!this.state.menuVis);
+                      }}
                       color={"green"}
                       floated={"left"}
                       icon={"bars"}
@@ -54,6 +73,31 @@ class layout extends Component {
           </Segment>
           <Container>{this.props.children}</Container>
         </Sidebar.Pusher>
+
+        <Sidebar
+          as={Menu}
+          animation={"push"}
+          visible={this.state.menuVis}
+          onHide={() => {
+            this.handleSidebar(false);
+          }}
+          inverted
+          vertical
+          pointing
+        >
+          <Menu.Item active={this.props.activeItem == "home"}>
+            <Icon name="home" />
+            Home
+          </Menu.Item>
+          <Menu.Item active={this.props.activeItem == "favorites"}>
+            <Icon name="star" />
+            Favorites
+          </Menu.Item>
+          <Menu.Item active={this.props.activeItem == "history"}>
+            <Icon name="history" />
+            Order History
+          </Menu.Item>
+        </Sidebar>
       </Sidebar.Pushable>
     );
   }

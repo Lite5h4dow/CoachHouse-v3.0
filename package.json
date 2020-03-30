@@ -5,6 +5,8 @@
   "dependencies": {
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
+    "https": "^1.0.0",
+    "moment": "^2.24.0",
     "mongodb": "^3.5.5",
     "next": "^9.3.2",
     "react": "^16.13.1",
