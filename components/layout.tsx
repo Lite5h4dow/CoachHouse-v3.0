@@ -83,7 +83,6 @@ class layout extends Component<LayoutProps, LayoutState> {
           }}
           inverted
           vertical
-          pointing
         >
           <Menu.Item active={this.props.activeItem == "home"}>
             <Icon name="home" />

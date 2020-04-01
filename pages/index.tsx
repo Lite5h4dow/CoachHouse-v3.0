@@ -3,17 +3,25 @@ import { Container, Header, Segment, Label, Grid } from "semantic-ui-react";
 import Layout from "../components/layout";
 import Axios from "axios";
 import https from "https";
+import foodObject from "../lib/foodObject";
+import RenderMenu from "../components/renderMenu";
 
-class index extends Component {
+interface MenuProps {
+  MenuItems: Array<foodObject>;
+}
+interface MenuStatus {
+  MenuCategory: String;
+}
+
+class index extends Component<MenuProps, {}> {
   static async getInitialProps(ctx) {
-    console.log(process.env.local_url);
-    // const MenuItems = await Axios({
-    //   method: "post",
-    //   url: `${process.env.local_url}/api/getItems`,
-    //   httpsAgent: new https.Agent({ keepAlive: true })
-    // });
-
-    return { MenuItems: process.env.local_url };
+    const MenuItems = await Axios({
+      method: "post",
+      url: `http://localhost:3000/api/getItems`,
+      httpsAgent: new https.Agent({ keepAlive: true })
+    });
+    // console.log(MenuItems.data)
+    return { MenuItems: MenuItems.data };
   }
 
   render() {
@@ -36,6 +44,8 @@ class index extends Component {
             color={"green"}
             content="Menu"
           />
+
+          <RenderMenu MenuList={this.props.MenuItems}></RenderMenu>
         </Segment>
       </Layout>
     );
