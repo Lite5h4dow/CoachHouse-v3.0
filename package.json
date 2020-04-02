@@ -9,10 +9,12 @@
     "moment": "^2.24.0",
     "mongodb": "^3.5.5",
     "next": "^9.3.2",
+    "pass-hash": "^2.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.2"
+    "semantic-ui-react": "^0.88.2",
+    "serialize-form": "^1.1.4"
   },
   "devDependencies": {
     "@types/mongodb": "^3.5.4",
