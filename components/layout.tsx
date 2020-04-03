@@ -142,6 +142,7 @@ class layout extends Component<LayoutProps, LayoutState> {
           onHide={() => {
             this.handleSidebar(false);
           }}
+          borderless
           inverted
           vertical
         >
