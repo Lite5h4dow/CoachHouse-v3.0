@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Db } from "mongodb";
 import { isNullOrUndefined } from "util";
-import withMongo from "../../middleware/withMongo";
+import withMongo from "../../../middleware/withMongo";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse, db: Db) => {
   var user = await db.collection("Users").findOne({ _id: req.body.userID });

@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Db } from "mongodb";
 
-import passHash from "pass-hash";
-import withMongo from "../../middleware/withMongo";
-import createSession from "../../lib/tools/createSession";
+import passHash from "password-hash";
+import withMongo from "../../../middleware/withMongo";
+import createSession from "../../../lib/tools/createSession";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse, db: Db) => {
   var user = await db

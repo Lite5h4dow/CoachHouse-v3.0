@@ -8,8 +8,9 @@
     "https": "^1.0.0",
     "moment": "^2.24.0",
     "mongodb": "^3.5.5",
+    "mssql": "^6.2.0",
     "next": "^9.3.2",
-    "pass-hash": "^2.0.0",
+    "password-hash": "^1.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-serialize": "^0.2.0",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "@types/mongodb": "^3.5.4",
+    "@types/mssql": "^6.0.0",
     "@types/node": "^13.9.5",
     "@types/react": "^16.9.27",
     "@types/semantic-ui": "^2.2.7",
